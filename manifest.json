@@ -4,6 +4,13 @@
   "version": "1.0",
   "manifest_version": 3,
 
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
+
   "permissions": [
     "idle",
     "scripting",
@@ -11,13 +18,31 @@
     "storage",
     "activeTab"
   ],
-
-  "background": {},
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
 
   "action": {
     "default_icon": "assets/lockedin_icon.png",
     "default_popup": "main/sidebar_main.html"
   },
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "https://learn.rochester.edu/*",
+        "https://www.google.com/*",
+        "*/scripts/popup.html"
+      ],
+      "js": ["scripts/content.js"]
+    }
+  ],
 
   "web_accessible_resources": [
     {
@@ -27,7 +52,8 @@
         "main/sidebar_main.html",
         "friends/sidebar_friends.html",
         "main/sidebar_main.css",
-        "friends/sidebar_friends.css"
+        "friends/sidebar_friends.css",
+        "scripts/popup.html"
       ],
       "matches": [
         "<all_urls>"
