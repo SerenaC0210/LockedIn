@@ -35,11 +35,6 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "exclude_matches": [
-        "https://learn.rochester.edu/*",
-        "https://www.google.com/*",
-        "*/scripts/popup.html"
-      ],
       "js": ["scripts/content.js"]
     }
   ],
@@ -52,8 +47,7 @@
         "main/sidebar_main.html",
         "friends/sidebar_friends.html",
         "main/sidebar_main.css",
-        "friends/sidebar_friends.css",
-        "scripts/popup.html"
+        "friends/sidebar_friends.css"
       ],
       "matches": [
         "<all_urls>"
