@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
         chrome.sidePanel.open({ tabId: id }).then(() => {
           chrome.sidePanel.setOptions({
             tabId: id,
-            path: "sidebar_friends.html",
+            path: "friends/sidebar_friends.html",
           });
         });
       });
@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
         chrome.sidePanel.open({ tabId: id }).then(() => {
           chrome.sidePanel.setOptions({
             tabId: id,
-            path: "sidebar_main.html",
+            path: "main/sidebar_main.html",
           });
         });
       });

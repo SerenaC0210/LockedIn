@@ -16,10 +16,10 @@
 
   "action": {
     "default_icon": "assets/extension_dropdown.png",
-    "openFriends": "sidebar_friends.html",
-    "openLockedIn": "sidebar_main.html"
+    "openFriends": "friends/sidebar_friends.html",
+    "openLockedIn": "main/sidebar_main.html"
   },
   "side_panel": {
-    "default_path": "sidebar_main.html"
+    "default_path": "main/sidebar_main.html"
   }
 }
