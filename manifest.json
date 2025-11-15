@@ -1,11 +1,11 @@
 
 {
-  "name": "LockedIn Extension",
-  "description": "Base Level Extension",
+  "name": "LockedIn",
+  "description": "Production extension for DandyHacks '25",
   "version": "1.0",
   "manifest_version": 3,
 
-  "permissions": ["idle", "scripting", "tabs"],
+  "permissions": ["idle", "scripting", "tabs", "sidePanel"],
 
   "host_permissions": ["<all_urls>"],
 
@@ -15,6 +15,9 @@
   },
 
   "action": {
-    "default_icon": "hello_extensions.png"
+    "default_icon": "Open Sidebar"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
   }
 }
