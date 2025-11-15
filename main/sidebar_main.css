@@ -1,17 +1,26 @@
+/* GENERAL */
 body {
-  margin: 0;
   background: #F9FBEF;
   font-family: 'Abel', sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.container {
+#container {
   width: 450px;
-  padding: 15px;
-  background: #F9FBEF;
+  padding: 20px;
   border: 2px solid #AFC841;
   border-radius: 25px;
+  background: #F9FBEF;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* clean spacing between sections */
 }
 
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -19,19 +28,20 @@ header {
 }
 
 #logo {
-  width: 160px;
+  width: 150px;
 }
 
 .close {
   background: none;
   border: none;
-  font-size: 22px;
+  font-size: 25px;
   cursor: pointer;
 }
 
+/* TABS */
 .tabs {
   display: flex;
-  margin-top: 10px;
+  gap: 10px;
 }
 
 .tab {
@@ -49,11 +59,11 @@ header {
   background: #AFC841;
 }
 
+/* TIMER */
 .timer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
 }
 
 .time {
@@ -80,29 +90,29 @@ header {
   cursor: pointer;
 }
 
+/* WHITELIST */
 .whitelist {
-  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .dropdown-header {
   background: #EAF1CB;
-  padding: 10px;
+  padding: 12px 15px;
   border-radius: 20px;
   font-size: 20px;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
 .dropdown-content {
-  margin-top: 10px;
   background: #F1F6DD;
   padding: 10px;
   border-radius: 15px;
-}
-
-.hidden {
-  display: none;
 }
 
 .box {
@@ -111,11 +121,14 @@ header {
   border-radius: 15px;
 }
 
+/* TODO LIST */
 .todos {
-  margin-top: 25px;
   background: #EAF1CB;
   padding: 15px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .title-row {
@@ -135,19 +148,23 @@ header {
 #todoList {
   list-style: none;
   padding-left: 0;
-  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 #todoList li {
-  padding: 8px;
+  padding: 10px;
   background: white;
   border-radius: 15px;
-  margin-bottom: 8px;
 }
 
+/* STATS */
 .stats {
-  margin-top: 25px;
   background: #EAF1CB;
   padding: 15px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

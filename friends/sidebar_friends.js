@@ -1,6 +1,6 @@
 document.getElementById("closeBtn").addEventListener("click", () => {
-    chrome.sidePanel.setOptions({ enabled: false });
-});
+    window.close(); // closes the popup
+  });
 
 // Switch back to LockedIn tab
 document.getElementById("lockedInBtn").addEventListener("click", () => {
@@ -12,3 +12,20 @@ document.getElementById("friendsBtn").addEventListener("click", () => {
     chrome.runtime.sendMessage({ action: "openFriends" });
 });
 
+document.getElementById("friendsBtn").addEventListener("click", () => {
+  chrome.windows.create({
+    url: chrome.runtime.getURL("friends/sidebar_friends.html"),
+    type: "popup",
+    width: 450,
+    height: 600
+  });
+});
+
+document.getElementById("lockedInBtn").addEventListener("click", () => {
+  chrome.windows.create({
+    url: chrome.runtime.getURL("main/sidebar_main.html"),
+    type: "popup",
+    width: 450,
+    height: 600
+  });
+});

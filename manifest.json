@@ -1,25 +1,37 @@
-
 {
   "name": "LockedIn",
   "description": "Production extension for DandyHacks '25",
   "version": "1.0",
   "manifest_version": 3,
 
-  "permissions": ["idle", "scripting", "tabs", "sidePanel"],
+  "permissions": [
+    "idle",
+    "scripting",
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
 
-  "host_permissions": ["<all_urls>"],
-
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
+  "background": {},
 
   "action": {
-    "default_icon": "assets/extension_dropdown.png",
-    "openFriends": "friends/sidebar_friends.html",
-    "openLockedIn": "main/sidebar_main.html"
+    "default_icon": "assets/lockedin_icon.png",
+    "default_popup": "main/sidebar_main.html"
   },
-  "side_panel": {
-    "default_path": "main/sidebar_main.html"
-  }
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/lockedin_icon.png",
+        "assets/lockedin_logo.png",
+        "main/sidebar_main.html",
+        "friends/sidebar_friends.html",
+        "main/sidebar_main.css",
+        "friends/sidebar_friends.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

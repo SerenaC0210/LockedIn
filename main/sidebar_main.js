@@ -1,6 +1,5 @@
-// Close side panel
 document.getElementById("closeBtn").addEventListener("click", () => {
-  chrome.sidePanel.setOptions({ enabled: false });
+  window.close(); // closes the popup
 });
 
 // Switch to Friends
@@ -50,9 +49,14 @@ function parseTime() {
 
 function updateTimer() {
   let [h, m, s] = parseTime();
-  s++;
-  if (s >= 60) { s = 0; m++; }
-  if (m >= 60) { m = 0; h++; }
+  s--; // decrement seconds
+  if (s < 0) { s = 59; m--; } 
+  if (m < 0) { m = 59; h--; }
+  if (h < 0) {
+    clearInterval(timerInterval);
+    timerRunning = false; // Stop the timer when it reaches zero
+    return;
+  }
 
   timeDisplay.textContent =
       `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
@@ -63,4 +67,22 @@ document.getElementById("lockIn").addEventListener("click", () => {
       timerRunning = true;
       timerInterval = setInterval(updateTimer, 1000);
   }
+});
+
+document.getElementById("friendsBtn").addEventListener("click", () => {
+  chrome.windows.create({
+    url: chrome.runtime.getURL("friends/sidebar_friends.html"),
+    type: "popup",
+    width: 450,
+    height: 600
+  });
+});
+
+document.getElementById("lockedInBtn").addEventListener("click", () => {
+  chrome.windows.create({
+    url: chrome.runtime.getURL("main/sidebar_main.html"),
+    type: "popup",
+    width: 450,
+    height: 600
+  });
 });
