@@ -15,9 +15,11 @@
   },
 
   "action": {
-    "default_icon": "Open Sidebar"
+    "default_icon": "assets/extension_dropdown.png",
+    "openFriends": "sidebar_friends.html",
+    "openLockedIn": "sidebar_main.html"
   },
   "side_panel": {
-    "default_path": "sidebar.html"
+    "default_path": "sidebar_main.html"
   }
 }

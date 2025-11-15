@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  background: #F9FBEF;
+  font-family: 'Abel', sans-serif;
+}
+
+.container {
+  width: 450px;
+  padding: 15px;
+  background: #F9FBEF;
+  border: 2px solid #AFC841;
+  border-radius: 25px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 160px;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 25px;
+  font-family: 'Geologica';
+  cursor: pointer;
+  border: none;
+  background: #e0edc5;
+  font-size: 18px;
+}
+
+.tab.active {
+  background: #AFC841;
+}
+
+.timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.time {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 15px 25px;
+  font-size: 28px;
+  width: 180px;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+.time:focus {
+  outline: 2px solid #AFC841;
+}
+
+#lockIn {
+  background: #AFC841;
+  border: none;
+  font-family: 'Geologica';
+  padding: 12px 25px;
+  font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.whitelist {
+  margin-top: 25px;
+}
+
+.dropdown-header {
+  background: #EAF1CB;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  margin-top: 10px;
+  background: #F1F6DD;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.box {
+  height: 120px;
+  background: white;
+  border-radius: 15px;
+}
+
+.todos {
+  margin-top: 25px;
+  background: #EAF1CB;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#edit {
+  background: #AFC841;
+  border-radius: 15px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#todoList {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+#todoList li {
+  padding: 8px;
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}
+
+.stats {
+  margin-top: 25px;
+  background: #EAF1CB;
+  padding: 15px;
+  border-radius: 20px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Geologica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+    <link rel="stylesheet" href="sidebar_main.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- TOP HEADER WITH LOGO + X BUTTON -->
+        <header>
+            <img src="assets/lockedin_logo.png" id="logo">
+
+            <button id="closeBtn" class="close">✕</button>
+        </header>
+
+        <!-- TAB BUTTONS -->
+        <div class="tabs">
+            <button id="lockedInBtn" class="tab active">LockedIn</button>
+            <button id="friendsBtn" class="tab">Friends</button>
+        </div>
+
+        <!-- TIMER SECTION -->
+        <section class="timer">
+            <div id="timeDisplay" class="time" contenteditable="true">00:00:00</div>
+            <button id="lockIn">Lock In</button>
+        </section>
+
+        <!-- WHITELIST DROPDOWN -->
+        <section class="whitelist">
+            <div id="whitelistHeader" class="dropdown-header">
+                Whitelisted Websites
+                <span class="arrow">▼</span>
+            </div>
+            <div id="whitelistContent" class="dropdown-content hidden">
+                <div class="box"></div>
+            </div>
+        </section>
+
+        <!-- TODO LIST -->
+        <section class="todos">
+            <div class="title-row">
+                <h3 id="todofont">To Do’s</h3>
+                <button id="edit">Edit</button>
+            </div>
+            <ul id="todoList"></ul>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats">
+            <p>Productivity Streak:</p>
+            <p>Hours Locked In:</p>
+        </section>
+
+    </div>
+
+    <script src="sidebar_main.js" defer></script>
+</body>
+</html>

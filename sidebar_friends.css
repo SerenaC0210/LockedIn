@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f9e9;
+}
+
+.container {
+    width: 451.68px;
+    height: 861px;
+    left: 977.32px;
+    top: 149px;
+
+    background: #F9FBEF;
+    border: 1px solid #AFC841;
+    border-radius: 20px;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header button {
+    border: none;
+    padding: 6px 12px;
+    background: #d6e8b5;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+header .active {
+    background: #bada55;
+}
+
+.timer {
+    margin-top: 15px;
+}
+
+.time {
+    font-size: 28px;
+    text-align: center;
+}
+
+.whitelist,
+.todos,
+.stats {
+    margin-top: 20px;
+    background: #e8f3cd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.friends-section {
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+.green-section {
+    background: #dce9b9;
+}
+
+.red-section {
+    background: #f2c6c6;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.07);
+    padding: 6px;
+    border-radius: 12px;
+}
+
+ol {
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+hr {
+    color: #bada55;
+}
+
+#lockedInBtn {
+    font-family: 'Geologica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+#friendsBtn {
+    font-family: 'Geologica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+}
