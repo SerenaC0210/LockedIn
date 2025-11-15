@@ -1,10 +1,20 @@
+
 {
-    "name": "LockedIn Extension",
-    "description": "Base Level Extension",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "text.html",
-      "default_icon": "hello_extensions.png"
-    }
+  "name": "LockedIn Extension",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "permissions": ["idle", "scripting", "tabs"],
+
+  "host_permissions": ["<all_urls>"],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_icon": "hello_extensions.png"
   }
+}
