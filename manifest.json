@@ -24,8 +24,7 @@
   ],
 
   "action": {
-    "default_icon": "assets/lockedin_icon.png",
-    "default_popup": "main/sidebar_main.html"
+    "default_icon": "assets/lockedin_icon.png"
   },
   
   "background": {

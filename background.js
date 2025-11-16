@@ -8,7 +8,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 function findTabByUrl(matches) {
-
   chrome.tabs.query({}, function(tabs) {
     let foundTab = null;
     for (let i = 0; i < tabs.length; i++) {
@@ -31,3 +30,27 @@ function findTabByUrl(matches) {
     }
   });
 }
+
+// Filter function to check if URL is accessible
+function isAccessibleUrl(url) {
+  return url &&
+    !url.startsWith('chrome://') &&
+    !url.startsWith('chrome-extension://') &&
+    !url.startsWith('edge://') &&
+    !url.startsWith('about:')
+}
+
+// Listen for icon clicks
+chrome.action.onClicked.addListener((tab) => {
+  // Check if the tab URL is accessible
+  if (!isAccessibleUrl(tab.url)) {
+    console.log('Cannot inject sidebar on this page');
+    return;
+  }
+
+  // Send message to toggle sidebar
+  chrome.tabs.sendMessage(tab.id, { action: 'toggleSidebar' })
+    .catch(err => {
+      console.log('Content script not loaded yet');
+    });
+});
