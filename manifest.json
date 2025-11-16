@@ -1,35 +1,48 @@
 {
-  "manifest_version": 3,
-  "name": "LockedIn Sidebar",
+  "name": "LockedIn",
+  "description": "Production extension for DandyHacks '25",
   "version": "1.0",
-  "description": "Productivity sidebar extension",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
-  ],
-  "action": {
-    "default_icon": {
-      "16": "assets/lockedin_logo.png",
-      "48": "assets/lockedin_logo.png",
-      "128": "assets/lockedin_logo.png"
-    }
+  "manifest_version": 3,
+
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
   },
+
+  "permissions": [
+    "idle",
+    "scripting",
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "action": {
+    "default_icon": "assets/lockedin_icon.png"
+  },
+  
   "background": {
     "service_worker": "background.js"
   },
+
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["inject_sidebar.js"],
+      "matches": ["<all_urls>"],
+      "js": [
+        "scripts/content.js",
+        "inject_sidebar.js"
+      ],
       "run_at": "document_idle",
       "all_frames": false
     }
   ],
+
   "web_accessible_resources": [
     {
       "resources": [
