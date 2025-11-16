@@ -29,6 +29,12 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #logo {
     width: 150px;
 }
@@ -91,14 +97,6 @@ header {
     align-items: center;
 }
 
-header button {
-    border: none;
-    padding: 6px 12px;
-    background: #d6e8b5;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
 header .active {
     background: #bada55;
 }
@@ -124,7 +122,7 @@ header .active {
 .friends-section {
     padding: 15px;
     border-radius: 15px;
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 .green-section {
@@ -156,7 +154,7 @@ hr {
     font-family: 'Geologica';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
 }
 
@@ -164,6 +162,14 @@ hr {
     font-family: 'Geologica';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
+}
+
+#MostLockedHeader {
+    background-color: #AFC841;
+}
+
+#NaughtyListHeader {
+    background-color: #b94b48;
 }

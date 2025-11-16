@@ -135,12 +135,17 @@ header {
   cursor: pointer;
 }
 
+#whitelistContent {
+  max-height: 130px;
+  overflow: hidden;
+}
+
 .box {
   border-radius: 20px;
   padding: 10px;
   margin: 0;
   overflow-y: auto;
-  flex: 1;
+  max-height: 130px;
   min-height: 0;
 }
 
