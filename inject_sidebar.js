@@ -23,7 +23,6 @@ function openSidebar(page = 'main/sidebar_main.html') {
             height: 100vh;
             border: none;
             z-index: 2147483647;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
         `;
 
         document.body.appendChild(newIframe);
