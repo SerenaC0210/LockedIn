@@ -3,8 +3,14 @@ document.getElementById("closeBtn").addEventListener("click", () => {
   window.parent.postMessage({ action: 'closeSidebar' }, '*');
 });
 
-// Remove the window.create calls for friendsBtn and lockedInBtn
-// These tabs will work within the same sidebar
+// TAB SWITCHING
+document.getElementById("lockedInBtn").addEventListener("click", () => {
+  window.parent.postMessage({ action: 'switchTab', page: '../main/sidebar_main.html' }, '*');
+});
+
+document.getElementById("friendsBtn").addEventListener("click", () => {
+  window.parent.postMessage({ action: 'switchTab', page: '../friends/sidebar_friends.html' }, '*');
+});
 
 // DROPDOWN TOGGLE
 const whitelistHeader = document.getElementById("whitelistHeader");
@@ -13,7 +19,7 @@ const whitelistContent = document.getElementById("whitelistContent");
 whitelistHeader.addEventListener("click", () => {
   whitelistContent.classList.toggle("hidden");
   let arrow = whitelistHeader.querySelector(".arrow");
-  arrow.textContent = whitelistContent.classList.contains("hidden") ? "▼" : "▲";
+  arrow.textContent = whitelistContent.classList.contains("hidden") ? "\u2193" : "\u2191";
 });
 
 // WHITELIST MANAGEMENT
@@ -34,7 +40,7 @@ function addWebsiteToList(url) {
   urlText.className = "website-url";
   
   const removeBtn = document.createElement("button");
-  removeBtn.textContent = "×";
+  removeBtn.textContent = "x";
   removeBtn.className = "remove-btn";
   removeBtn.addEventListener("click", () => {
     siteDiv.remove();
@@ -78,7 +84,7 @@ function createWebsiteItem(url) {
   urlText.className = "website-url";
   
   const removeBtn = document.createElement("button");
-  removeBtn.textContent = "×";
+  removeBtn.textContent = "x";
   removeBtn.className = "remove-btn";
   removeBtn.addEventListener("click", () => {
     siteDiv.remove();
@@ -99,17 +105,80 @@ function saveWhitelist() {
   chrome.storage.local.set({ whitelistedSites: sites });
 }
 
-// TODO EDIT MODE
-const editButton = document.getElementById("edit");
-const todoList = document.getElementById("todoList");
+// TODO LIST MANAGEMENT (same structure as whitelist)
+const todoBox = todoContent.querySelector(".box");
 
-editButton.addEventListener("click", () => {
-  const li = document.createElement("li");
-  li.contentEditable = true;
-  li.textContent = "New Task";
-  todoList.appendChild(li);
-  li.focus();
+todoHeader.addEventListener("click", () => {
+  todoContent.classList.toggle("hidden");
+  let arrow = todoHeader.querySelector(".arrow");
+  arrow.textContent = todoContent.classList.contains("hidden") ? "\u2193" : "\u2191";
 });
+
+// Load saved todos
+chrome.storage.local.get(["todos"], (result) => {
+    const todos = result.todos || [];
+    todos.forEach(text => addTodoToList(text));
+    addTodoInputField();
+});
+
+function addTodoToList(text) {
+    const item = createTodoItem(text);
+    todoBox.insertBefore(item, todoBox.querySelector(".todo-input"));
+}
+
+function createTodoItem(text) {
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "website-item"; // same styling
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = text;
+    textSpan.className = "website-url";
+    textSpan.contentEditable = true;
+    textSpan.addEventListener("blur", saveTodos);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "x";
+    removeBtn.className = "remove-btn";
+    removeBtn.addEventListener("click", () => {
+        itemDiv.remove();
+        saveTodos();
+    });
+
+    itemDiv.appendChild(textSpan);
+    itemDiv.appendChild(removeBtn);
+    return itemDiv;
+}
+
+function addTodoInputField() {
+    const inputDiv = document.createElement("div");
+    inputDiv.className = "todo-input";
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Add Task";
+    input.className = "add-website-input"; // same styling
+
+    input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && input.value.trim()) {
+            const text = input.value.trim();
+            todoBox.insertBefore(createTodoItem(text), inputDiv);
+            input.value = "";
+            saveTodos();
+        }
+    });
+
+    inputDiv.appendChild(input);
+    todoBox.appendChild(inputDiv);
+}
+
+function saveTodos() {
+    const todos = [];
+    todoBox.querySelectorAll(".website-item .website-url").forEach(span => {
+        todos.push(span.textContent);
+    });
+    chrome.storage.local.set({ todos });
+}
+
 
 // TIMER FUNCTIONALITY
 let timerRunning = false;

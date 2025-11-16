@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href='https://fonts.googleapis.com/css?family=Geologica' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
     <link rel="stylesheet" href="sidebar_main.css">
 </head>
+
 <body>
     <div id="container">
         <!-- TOP HEADER WITH LOGO + X BUTTON -->
@@ -29,7 +31,7 @@
         <section class="whitelist">
             <div id="whitelistHeader" class="dropdown-header">
                 Whitelisted Websites
-                <span class="arrow">▼</span>
+                <span class="arrow">&#8595;</span>
             </div>
             <div id="whitelistContent" class="dropdown-content hidden">
                 <div class="box"></div>
@@ -38,20 +40,25 @@
 
         <!-- TODO LIST -->
         <section class="todos">
-            <div class="title-row">
-                <h3 id="todofont">To Do</h3>
-                <button id="edit">Edit</button>
+            <div id="todoHeader" class="dropdown-header">
+                To Do
+                <span class="arrow">&#8595;</span>
             </div>
-            <ul id="todoList"></ul>
+        
+            <div id="todoContent" class="dropdown-content hidden">
+                <div class="box"></div>
+            </div>
         </section>
+        
 
         <!-- STATS -->
         <section class="stats">
-            <p>Productivity Streak:</p>
-            <p>Hours Locked In:</p>
+            <p>Productivity Streak: 0</p>
+            <p>Hours Locked In: 0</p>
         </section>
     </div>
 
     <script src="sidebar_main.js"></script>
 </body>
+
 </html>
