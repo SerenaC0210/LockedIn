@@ -14,9 +14,9 @@
   ],
   "action": {
     "default_icon": {
-      "16": "assets/lockedin_logo.png",
-      "48": "assets/lockedin_logo.png",
-      "128": "assets/lockedin_logo.png"
+      "16": "assets/lockedin_icon.png",
+      "48": "assets/lockedin_icon.png",
+      "128": "assets/lockedin_icon.png"
     }
   },
   "background": {
