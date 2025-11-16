@@ -5,10 +5,11 @@ chrome.storage.sync.get(['whitelist'], function(result) {
     whitelist = [
       "https://learn.rochester.edu/",
       "https://www.gradescope.com/",
-      "https://www.google.com"
+      "https://www.google.com",
+      "https://ia800303.us.archive.org/24/items/youtube-xvFZjo5PgG0/xvFZjo5PgG0.mp4"
     ];
   } else {
-    whitelist = result.whitelist
+    whitelist = result.whitelist;
   }
   
   const currentUrl = window.location.href;
@@ -30,68 +31,42 @@ function distraction(query) {
     whitelist: whitelist 
   });
 
-  // const popupUrl = chrome.runtime.getURL("scripts/popup.html");
-  // chrome.runtime.sendMessage({ action: "openNewTab", url: popupUrl }); 
-  const banner = document.createElement('div');
-  banner.innerHTML = `
-    <div style="
+
+  // FULL PAGE PERMANENT BLOCKER
+
+  const overlay = document.createElement('div');
+  overlay.innerHTML = `
+    <style>
+      body { 
+        margin: 0 !important; 
+        overflow: hidden !important; 
+      }
+    </style>
+
+    <div id="study-blocker" style="
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      width: 100vw;
+      height: 100vh;
       background: #ff6b6b;
       color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      z-index: 999999;
+      z-index: 999999999;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      font-family: sans-serif;
     ">
-      <span style="flex: 1;">Get back to studying!</span>
-      <button style="
-        position: absolute;
-        right: 15px;
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
+      <div style="
+        font-size: 40px;
         font-weight: bold;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        line-height: 1;
-      " onclick="this.parentElement.parentElement.remove()">
-        ×
-      </button>
+        text-align: center;
+      ">
+        Get back to studying!
+      </div>
     </div>
-  `;  
-  document.body.insertAdjacentElement('afterbegin', banner);
-  
-  setTimeout(() => banner.remove(), 9000);
+  `;
 
-  const finalbanner = document.createElement('div');
-  finalbanner.innerHTML = `
-    <div style="
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #ff6b6b;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      z-index: 999998;
-    ">
-      You are not locked in... :(
-    </div>
-  `;  
-  document.body.insertAdjacentElement('afterbegin', finalbanner);
-  
-  setTimeout(() => finalbanner.remove(), 30000);
+  document.body.appendChild(overlay);
 }
-
-// distraction(document.querySelector("html"));
