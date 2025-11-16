@@ -1,37 +1,47 @@
 {
-  "name": "LockedIn",
-  "description": "Production extension for DandyHacks '25",
-  "version": "1.0",
   "manifest_version": 3,
-
+  "name": "LockedIn Sidebar",
+  "version": "1.0",
+  "description": "Productivity sidebar extension",
   "permissions": [
-    "idle",
-    "scripting",
-    "tabs",
     "storage",
-    "activeTab"
+    "activeTab",
+    "scripting"
   ],
-
-  "background": {},
-
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "action": {
-    "default_icon": "assets/lockedin_icon.png",
-    "default_popup": "main/sidebar_main.html"
+    "default_icon": {
+      "16": "assets/lockedin_logo.png",
+      "48": "assets/lockedin_logo.png",
+      "128": "assets/lockedin_logo.png"
+    }
   },
-
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["inject_sidebar.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": [
-        "assets/lockedin_icon.png",
-        "assets/lockedin_logo.png",
         "main/sidebar_main.html",
-        "friends/sidebar_friends.html",
         "main/sidebar_main.css",
-        "friends/sidebar_friends.css"
+        "main/sidebar_main.js",
+        "friends/sidebar_friends.html",
+        "friends/sidebar_friends.css",
+        "friends/sidebar_friends.js",
+        "assets/*"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["http://*/*", "https://*/*"]
     }
   ]
 }
