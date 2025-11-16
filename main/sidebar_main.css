@@ -9,7 +9,7 @@ body {
 }
 
 #container {
-  width: 450px;
+  width: 330px;
   padding: 20px;
   border: 2px solid #AFC841;
   border-radius: 25px;
@@ -17,9 +17,9 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 20px; /* clean spacing between sections */
+  gap: 20px;
+  height: fit-content;
 }
-
 /* HEADER */
 header {
   display: flex;
@@ -64,10 +64,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #EAF1CB;
+  padding: 15px;
+  border-radius: 20px;
+  gap: 15px;
 }
 
 .time {
-  background: #ffffff;
+  background: #F9FBEF;
   border-radius: 20px;
   padding: 15px 25px;
   font-size: 28px;
@@ -84,7 +88,7 @@ header {
   background: #AFC841;
   border: none;
   font-family: 'Geologica';
-  padding: 12px 25px;
+  padding: 12px 50px;
   font-size: 20px;
   border-radius: 20px;
   cursor: pointer;
@@ -102,9 +106,8 @@ header {
   padding: 12px 15px;
   border-radius: 20px;
   font-size: 20px;
-
+  margin: top bottom 0px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
@@ -112,13 +115,75 @@ header {
 .dropdown-content {
   background: #F1F6DD;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 20px;
+  margin: bottom top 0px;
 }
 
 .box {
-  height: 120px;
-  background: white;
+  min-height: 120px;
+  border-radius: 20px;
+  padding: 10px;
+  margin: top bottom 0px; 
+}
+
+/* WHITELIST ITEMS */
+.website-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
   border-radius: 15px;
+  margin-bottom: 8px;
+}
+
+.website-url {
+  flex: 1;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.remove-btn {
+  background: #ff4d4d;
+  color: #F9FBEF;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.remove-btn:hover {
+  background: #ff3333;
+}
+
+.add-website-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px dashed #AFC841;
+  border-radius: 15px;
+  background: transparent;
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.add-website-input:focus {
+  outline: none;
+  border: 2px solid #AFC841;
+}
+
+.add-website-input::placeholder {
+  color: #999;
+}
+
+.hidden {
+  display: none;
 }
 
 /* TODO LIST */
@@ -135,14 +200,24 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #F9FBEF;
+  padding: 12px 15px;
+  border-radius: 20px;
+}
+
+#todofont {
+  margin: 0;
+  font-size: 20px;
 }
 
 #edit {
   background: #AFC841;
-  border-radius: 15px;
-  padding: 5px 15px;
+  border-radius: 20px;
+  padding: 8px 20px;
   border: none;
   cursor: pointer;
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
 }
 
 #todoList {
@@ -151,11 +226,12 @@ header {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
 }
 
 #todoList li {
   padding: 10px;
-  background: white;
+  background: #F9FBEF;
   border-radius: 15px;
 }
 

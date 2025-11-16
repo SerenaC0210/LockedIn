@@ -20,8 +20,95 @@ whitelistHeader.addEventListener("click", () => {
   whitelistContent.classList.toggle("hidden");
 
   let arrow = whitelistHeader.querySelector(".arrow");
-  arrow.textContent = whitelistContent.classList.contains("hidden") ? "▼" : "▲";
+  arrow.textContent = whitelistContent.classList.contains("hidden") ? '\u2193' : '\u2191';
 });
+
+// WHITELIST MANAGEMENT
+const whitelistBox = whitelistContent.querySelector(".box");
+
+// Load saved websites from storage
+chrome.storage.local.get(["whitelistedSites"], (result) => {
+  const sites = result.whitelistedSites || [];
+  sites.forEach(site => addWebsiteToList(site));
+  addInputField();
+});
+
+function addWebsiteToList(url) {
+  const siteDiv = document.createElement("div");
+  siteDiv.className = "website-item";
+  
+  const urlText = document.createElement("span");
+  urlText.textContent = url;
+  urlText.className = "website-url";
+  
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "X";
+  removeBtn.className = "remove-btn";
+  removeBtn.addEventListener("click", () => {
+    siteDiv.remove();
+    saveWhitelist();
+  });
+  
+  siteDiv.appendChild(urlText);
+  siteDiv.appendChild(removeBtn);
+  whitelistBox.appendChild(siteDiv);
+}
+
+function addInputField() {
+  const inputDiv = document.createElement("div");
+  inputDiv.className = "website-input";
+  
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = "Add Website";
+  input.className = "add-website-input";
+  
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" && input.value.trim()) {
+      const url = input.value.trim();
+      
+      // Insert the new website before the input field
+      const inputDiv = input.parentElement;
+      whitelistBox.insertBefore(createWebsiteItem(url), inputDiv);
+      
+      input.value = "";
+      saveWhitelist();
+    }
+  });
+  
+  inputDiv.appendChild(input);
+  whitelistBox.appendChild(inputDiv);
+}
+
+function createWebsiteItem(url) {
+  const siteDiv = document.createElement("div");
+  siteDiv.className = "website-item";
+  
+  const urlText = document.createElement("span");
+  urlText.textContent = url;
+  urlText.className = "website-url";
+  
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "X";
+  removeBtn.className = "remove-btn";
+  removeBtn.addEventListener("click", () => {
+    siteDiv.remove();
+    saveWhitelist();
+  });
+  
+  siteDiv.appendChild(urlText);
+  siteDiv.appendChild(removeBtn);
+  
+  return siteDiv;
+}
+
+function saveWhitelist() {
+  const sites = [];
+  whitelistBox.querySelectorAll(".website-item .website-url").forEach(span => {
+    sites.push(span.textContent);
+  });
+  chrome.storage.local.set({ whitelistedSites: sites });
+}
 
 // TODO EDIT MODE
 const editButton = document.getElementById("edit");
