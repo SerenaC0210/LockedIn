@@ -14,7 +14,7 @@ body {
 }
 
 #container {
-    width: 330px;
+    width: 305px;
     padding: 20px;
     padding-bottom: 15px;
     border: 2px solid #AFC841;
@@ -126,7 +126,7 @@ header .active {
 }
 
 .green-section {
-    background: #dce9b9;
+    background: #EAF1CB;
 }
 
 .red-section {
