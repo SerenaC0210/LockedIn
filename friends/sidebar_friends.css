@@ -1,20 +1,100 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f9e9;
-}
-
-.container {
-    width: 451.68px;
-    height: 861px;
-    left: 977.32px;
-    top: 149px;
-
+/* body {
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 15px;
+    border: 2px solid #AFC841;
+    border-radius: 25px; 
     background: #F9FBEF;
-    border: 1px solid #AFC841;
-    border-radius: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+} */
 
+
+html {
+    width: 330px !important;
+    max-width: 330px !important;
+    overflow-x: hidden !important;
 }
+
+body {
+    width: 330px !important;
+    max-width: 330px !important;
+    margin: 0 !important;
+    padding: 20px;
+    padding-bottom: 15px;
+    border: 2px solid #AFC841;
+    border-radius: 25px;
+    background: #F9FBEF;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#logo {
+    width: 150px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    gap: 10px;
+    background: #EAF1CB;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'Geologica';
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    transition: background 0.2s ease;
+}
+
+.tab.active {
+    background: #AFC841;
+}
+
+.tab:hover:not(.active) {
+    background: rgba(175, 200, 65, 0.3);
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* .container {
+    width: 330px;
+    padding: 20px;
+    padding-bottom: 15px;
+    border: 2px solid #AFC841;
+    border-radius: 25px;
+    background: #F9FBEF;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+} */
 
 header {
     display: flex;

@@ -8,14 +8,19 @@
 
 <body>
 
-    <div class="container">
+    
 
         <!-- HEADER TABS -->
         <header>
-            <button id="lockedInBtn">LockedIn</button>
-            <button id="friendsBtn" class="active">Friends</button>
-            <button id="closeBtn">x</button>
+            <img src="../assets/lockedin_logo.png" id="logo">
+            <button id="closeBtn" class="close">&#10005;</button>
         </header>
+        
+        <!-- TAB BUTTONS -->
+        <div class="tabs">
+            <button id="lockedInBtn" class="tab">LockedIn</button>
+            <button id="friendsBtn" class="tab active">Friends</button>
+        </div>
 
         <!-- MOST LOCKED IN -->
         <section class="friends-section green-section">
@@ -40,7 +45,6 @@
             </ol>
         </section>
 
-    </div>
 
     <script src="sidebar_friends.js"></script>
 </body>
