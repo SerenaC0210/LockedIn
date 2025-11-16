@@ -54,9 +54,7 @@
         "friends/sidebar_friends.js",
         "assets/*"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["http://*/*", "https://*/*"]
     }
   ]
 }
