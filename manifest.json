@@ -35,19 +35,25 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["scripts/content.js"]
+      "js": [
+        "scripts/content.js",
+        "inject_sidebar.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
     }
   ],
 
   "web_accessible_resources": [
     {
       "resources": [
-        "assets/lockedin_icon.png",
-        "assets/lockedin_logo.png",
         "main/sidebar_main.html",
-        "friends/sidebar_friends.html",
         "main/sidebar_main.css",
-        "friends/sidebar_friends.css"
+        "main/sidebar_main.js",
+        "friends/sidebar_friends.html",
+        "friends/sidebar_friends.css",
+        "friends/sidebar_friends.js",
+        "assets/*"
       ],
       "matches": [
         "<all_urls>"
