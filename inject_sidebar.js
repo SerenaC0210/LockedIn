@@ -48,7 +48,7 @@ window.addEventListener('message', (event) => {
     if (event.data.action === 'closeSidebar') {
         removeSidebar();
     } else if (event.data.action === 'switchTab') {
-        removeSidebar();
+        // removeSidebar();
         openSidebar(event.data.page);
     }
 });
