@@ -67,3 +67,9 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     chrome.tabs.sendMessage(tabs[0].id, msg);
   });
 });
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.action === "switchToWhitelistedTab" && msg.url) {
+    chrome.tabs.update(sender.tab.id, { url: msg.url });
+  }
+});

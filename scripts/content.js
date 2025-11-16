@@ -26,10 +26,14 @@ chrome.storage.sync.get(['whitelist'], function(result) {
 function distraction(query) {
   if (!query) return;
 
-  chrome.runtime.sendMessage({ 
-    action: "switchToWhitelistedTab", 
-    whitelist: whitelist 
-  });
+// Pick a random URL from the whitelist
+const randomUrl = whitelist[Math.floor(Math.random() * whitelist.length)];
+
+chrome.runtime.sendMessage({ 
+  action: "switchToWhitelistedTab", 
+  url: randomUrl 
+});
+
 
 
   // FULL PAGE PERMANENT BLOCKER
