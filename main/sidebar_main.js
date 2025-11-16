@@ -106,6 +106,8 @@ function saveWhitelist() {
 }
 
 // TODO LIST MANAGEMENT (same structure as whitelist)
+const todoHeader = document.getElementById("todoHeader");
+const todoContent = document.getElementById("todoContent");
 const todoBox = todoContent.querySelector(".box");
 
 todoHeader.addEventListener("click", () => {

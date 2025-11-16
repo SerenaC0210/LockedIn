@@ -3,25 +3,32 @@
 
 <head>
     <link href='https://fonts.googleapis.com/css?family=Geologica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
     <link rel="stylesheet" href="sidebar_friends.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div id="container">
 
         <!-- HEADER TABS -->
         <header>
-            <button id="lockedInBtn">LockedIn</button>
-            <button id="friendsBtn" class="active">Friends</button>
-            <button id="closeBtn">x</button>
+            <img src="../assets/lockedin_logo.png" id="logo">
+            <button id="closeBtn" class="close">&#10005;</button>
         </header>
+        
+        <!-- TAB BUTTONS -->
+        <div class="tabs">
+            <button id="lockedInBtn" class="tab">LockedIn</button>
+            <button id="friendsBtn" class="tab active">Friends</button>
+        </div>
 
         <!-- MOST LOCKED IN -->
         <section class="friends-section green-section">
-            <h2>Most Locked In</h2>
+            <h2 id ="MostLockedHeader">Most Locked In</h2>
 
             <ol>
+                <li>Lucy's Hours Locked In: 329</li>
                 <li>Hailey's Hours Locked In: 98</li>
                 <li>Serena's Hours Locked In: 75</li>
                 <li>Danica's Hours Locked In: 64</li>
@@ -32,7 +39,7 @@
 
         <!-- NAUGHTY LIST -->
         <section class="friends-section red-section">
-            <h2>Naughty List</h2>
+            <h2 id="NaughtyListHeader">Naughty List</h2>
 
             <ol>
                 <li>Sara's Times Distracted: 247</li>
@@ -41,7 +48,6 @@
         </section>
 
     </div>
-
     <script src="sidebar_friends.js"></script>
 </body>
 
