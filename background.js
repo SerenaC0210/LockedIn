@@ -54,3 +54,16 @@ chrome.action.onClicked.addListener((tab) => {
       console.log('Content script not loaded yet');
     });
 });
+
+
+console.log("🔥 background.js loaded");
+
+chrome.runtime.onMessage.addListener((msg, sender) => {
+  console.log("📥 Background received:", msg);
+
+  chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+    if (!tabs.length) return;
+
+    chrome.tabs.sendMessage(tabs[0].id, msg);
+  });
+});

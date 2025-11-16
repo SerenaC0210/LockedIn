@@ -8,9 +8,8 @@ let loop = 0;
 
 const IDLE_TIME = 5 * 1000; // 5 seconds
 
-
 /* ---------------------------------------
-    🎵 BACKGROUND MUSIC SETUP (FIXED)
+    🎵 BACKGROUND MUSIC
 --------------------------------------- */
 
 const bgMusic = new Audio(chrome.runtime.getURL("musicFun.mp3"));
@@ -22,45 +21,40 @@ screamAudio.volume = 1.0;
 
 let audioUnlocked = false;
 
-// Unlock audio AFTER user interacts (Chrome policy)
 window.addEventListener("click", () => {
   if (!audioUnlocked) {
-    console.log("🔓 Unlocking audio...");
     bgMusic.play().then(() => {
       bgMusic.pause();
       bgMusic.currentTime = 0;
       audioUnlocked = true;
-      console.log("🔓 Audio unlocked for bg + scream");
+      console.log("🔓 Audio unlocked");
     });
   }
 });
 
-
 /* ---------------------------------------
-    🔁 TTS LOOPING + SCREAM
+    🔁 TTS LOOP + SCREAM
 --------------------------------------- */
 
 function startTtsLoop() {
   if (ttsInterval) return;
 
+  loop = 0;
   console.log("🔁 Starting TTS loop...");
-  loop = 0;  // reset per idle session
 
   ttsInterval = setInterval(() => {
     if (!isIdle) return;
 
     if (loop < 5) {
-      speakNext();
+      if (window.speakNext) window.speakNext();
       loop++;
       return;
     }
 
     if (loop === 5) {
-      console.log("😱 Playing scream!");
       screamAudio.currentTime = 0;
-      screamAudio.play().catch(err => console.error("❌ Scream error:", err));
-
-      loop++;                 
+      screamAudio.play();
+      loop++;
       stopTtsLoop();
     }
   }, 5000);
@@ -71,7 +65,6 @@ function stopTtsLoop() {
   ttsInterval = null;
 }
 
-
 /* ---------------------------------------
     ⏰ IDLE DETECTION
 --------------------------------------- */
@@ -80,34 +73,25 @@ function resetIdleTimer() {
   if (idleTimeout) clearTimeout(idleTimeout);
 
   if (isIdle) {
-    console.log("🚶 User became active");
     isIdle = false;
-
     bgMusic.pause();
     bgMusic.currentTime = 0;
-
     stopTtsLoop();
   }
 
   idleTimeout = setTimeout(() => {
-    console.log("😴 User idle for 5 seconds");
     isIdle = true;
 
-    // Start background music (this finally works)
-    if (audioUnlocked) {
-      console.log("🎶 Starting background music");
-      bgMusic.play().catch(err => console.error("❌ Music error:", err));
-    }
+    if (audioUnlocked) bgMusic.play();
 
     startTtsLoop();
+
   }, IDLE_TIME);
 }
 
-
-// Reset idle timer when user interacts
+// Track activity
 ["mousemove", "keydown", "click", "scroll"].forEach(evt => {
   window.addEventListener(evt, resetIdleTimer);
 });
 
-// Kick off initial timer
 resetIdleTimer();

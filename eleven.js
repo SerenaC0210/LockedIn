@@ -1,3 +1,6 @@
+// eleven.js
+console.log("🎧 eleven.js loaded");
+
 let lineIndex = 0;
 
 const lines = [
@@ -14,6 +17,8 @@ const VOICE_ID = "dtSEyYGNJqjrtBArPCVZ";
 async function speakNext() {
   const text = lines[lineIndex];
   lineIndex = (lineIndex + 1) % lines.length;
+
+  console.log("🗣️ TTS line:", text);
 
   try {
     const response = await fetch(
@@ -37,13 +42,21 @@ async function speakNext() {
       }
     );
 
+    if (!response.ok) {
+      console.error("❌ ElevenLabs response not OK:", response.status, response.statusText);
+      return;
+    }
+
     const audioData = await response.arrayBuffer();
     const blob = new Blob([audioData], { type: "audio/mpeg" });
     const url = URL.createObjectURL(blob);
-    const audio = new Audio(url);
 
-    audio.play();
+    const audio = new Audio(url);
+    audio.play().catch(err => console.error("❌ TTS play error:", err));
   } catch (err) {
-    console.error("TTS error:", err);
+    console.error("❌ TTS error:", err);
   }
 }
+
+// ⭐ Make it visible to idle.js
+window.speakNext = speakNext;

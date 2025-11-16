@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <button id="playBtn">Play Music</button>
+
+  <audio id="bgMusic"></audio>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    music.src = "../assets/musicFun.mp3";  // must be correct path
+    music.load(); // ensures browser loads the file
+
+    document.getElementById("playBtn").addEventListener("click", async () => {
+      try {
+        await music.play();
+        console.log("Music is playing!");
+      } catch (err) {
+        console.error("Play failed:", err);
+      }
+    });
+  </script>
+</body>
+
+</html>
