@@ -21,4 +21,4 @@ Javascript, HTML, CSS, Figma
 ## Links: 
 Demo Video: https://youtu.be/ph6FOv9Pdc8?si=F25XrTYzeTc3t54z
 <br/>
-Devpost: https://devpost.com/software/lockedin-a7rodk?ref_content=user-portfolio&ref_feature=in_progress
+Devpost: https://devpost.com/software/lockedin-a7rodk
