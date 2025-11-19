@@ -19,6 +19,6 @@ Lets you configure session duration, whitelist sites, and to-do list
 Javascript, HTML, CSS, Figma
 
 ## Links: 
-Demo Video: https://youtu.be/ph6FOv9Pdc8?si=F25XrTYzeTc3t54z
+Demo Video: https://youtu.be/cTiUPcrUhsM 
 <br/>
 Devpost: https://devpost.com/software/lockedin-a7rodk
